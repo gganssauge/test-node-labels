@@ -1,0 +1,44 @@
+creation_properties = {
+  name = "${CREATOR}"
+  host = "${HOST_NAME}"
+}
+
+resource-group = {
+  name = "${RESOURCE_GROUP}"
+  location = "${LOCATION}"
+}
+
+cluster = {
+  name = "${CLUSTER_NAME}"
+  kubernetes_version = "${K8S_VERSION}"
+  app_pool = {
+    agent_size = "$K8S_AGENT_VMSIZE"
+    agent_count = "$K8S_AGENT_COUNT"
+    max_pods = "50"
+    os_disk_size_gb = "64"
+    labels = {
+      stack = "app"
+    }
+  }
+  monitor_pool = {
+    agent_size = "$K8S_MONITOR_VMSIZE"
+    agent_count = "$K8S_MONITOR_COUNT"
+    max_pods = "50"
+    os_disk_size_gb = "64"
+    labels = {
+      stack = "monitoring"
+    }
+  }
+}
+
+ssh-auth = {
+  admin_user = "${K8S_ADMIN_USERNAME}"
+  public_key_path = "${K8SADMIN_PUBKEY}"
+}
+
+azure = {
+  subscription_id = "${SUBSCRIPTION_ID}"
+  client_id = "${SP_APPID}"
+  client_secret = "${SP_PASSWORD}"
+  tenant_id = "${SP_TENANT_ID}"
+}

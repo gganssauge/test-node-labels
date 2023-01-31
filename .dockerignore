@@ -1,0 +1,9 @@
+*
+!*.id_rsa*
+!development-scripts/
+!infrastructure/
+infrastructure/**/.terraform
+infrastructure/**/*.tfstate*
+infrastructure/**/*.tfvars
+infrastructure/**/*.yaml
+.terraform.lock.hcl
