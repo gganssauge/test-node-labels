@@ -10,8 +10,6 @@ containerId="provision_k8s_$imageId"
 
 trap 'echo "ERROR: Check failed."' ERR
 
-env | sort
-
 echo "INFO: Building temporary deployment image..."
 docker build -t "$imageId" --pull --no-cache -f "$dockerfile" .
 docker run --rm --env-file variables.env --name "$containerId" "$imageId"
