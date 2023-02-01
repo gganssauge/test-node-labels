@@ -172,8 +172,10 @@ apply_terraform_module() {
         approve=""
     fi
 
+    export TF_LOG_PROVIDER=DEBUG
     terraform_in_module "${module_dir}" plan -no-color -out=plan.out
     terraform_in_module "${module_dir}" apply -no-color "$approve" plan.out
+    unset TF_LOG_PROVIDER
 }
 
 check_agent_nodes() {
