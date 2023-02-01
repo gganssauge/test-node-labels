@@ -31,7 +31,7 @@ pipeline {
                             'TRANSFER_ID_RSA_PUB_PATH',
                             'DEV_SP')) {
                         docker.withRegistry(auroralib.HAUFE_REGISTRY, auroralib.HAUFE_REGISTRY_SECRET) {
-                            sh './jenkins.sh
+                            sh './jenkins.sh'
                         }
                     }
                 }
