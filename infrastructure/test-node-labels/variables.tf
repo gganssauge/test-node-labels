@@ -51,14 +51,6 @@ variable "subscription_properties" {
   })
 }
 
-variable "auth" {
-  description = "Authentication properties"
-  type = object({
-    admin_user          = string // name of admin user
-    ssh_public_key_path = string // Path to ssh public key file needed for admin access
-  })
-}
-
 variable "kubeconfig" {
   description = "path of configuration file for the created k8s cluster"
   type        = string

@@ -2,8 +2,8 @@
 
 set -eu -o pipefail
 
-K8SADMIN_KEY=${K8SADMIN_KEY:-$HOME/.ssh/k8sadmin.id_rsa}
-K8SADMIN_PUBKEY=${K8SADMIN_PUBKEY:-$HOME/.ssh/k8sadmin.id_rsa.pub}
+K8SADMIN_KEY="$(readlink -f "${K8SADMIN_KEY:-$HOME/.ssh/k8sadmin.id_rsa}")"; export K8SADMIN_PUBKEY
+K8SADMIN_PUBKEY="$(readlink -f "${K8SADMIN_PUBKEY:-$HOME/.ssh/k8sadmin.id_rsa.pub}")"; export K8SADMIN_PUBKEY
 LOCATION=northeurope; export LOCATION
 RESOURCE_GROUP="dev-test-$(date +%Y%m%d%H%M)"; export RESOURCE_GROUP
 
@@ -264,10 +264,6 @@ main() {
     info "k8s" "App node count: $K8S_AGENT_COUNT."
     info "k8s" "Monitor node count: $K8S_MONITOR_COUNT."
 
-    # the ssh keys are in $PWD but terraform makes a chdir into $infrastructure_dir and so the
-    # path must be adapted
-    K8SADMIN_PUBKEY="$(readlink -f "$K8SADMIN_PUBKEY")"; export K8SADMIN_PUBKEY
-
     checkVariableIsNotEmpty DEV_SP_APPID DEV_SP_PASSWORD DEV_SUBSCRIPTION_ID SP_TENANTID
 
     azure_login
@@ -279,9 +275,5 @@ main() {
     echo "Running tests"
     runtests "$infrastructure_dir"
 }
-
-separator
-env | sort
-separator
 
 main

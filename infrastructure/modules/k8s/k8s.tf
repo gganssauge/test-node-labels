@@ -14,13 +14,6 @@ resource "azurerm_kubernetes_cluster" "k8s" {
   kubernetes_version  = var.cluster.kubernetes_version
   sku_tier            = local.sku_tier
 
-  linux_profile {
-    admin_username = var.ssh-auth.admin_user
-    ssh_key {
-      key_data = sensitive(file(var.ssh-auth.public_key_path))
-    }
-  }
-
   default_node_pool {
     name            = "agentpool"
     vm_size         = var.cluster.app_pool.agent_size

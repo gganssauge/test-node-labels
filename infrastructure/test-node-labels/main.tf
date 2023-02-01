@@ -32,10 +32,6 @@ module "k8s" {
   }
 
   resource-group = module.cluster-resource-group.resource-group
-  ssh-auth = {
-    admin_user      = var.auth.admin_user
-    public_key_path = var.auth.ssh_public_key_path
-  }
 
   creation_properties = var.creation_properties
 }

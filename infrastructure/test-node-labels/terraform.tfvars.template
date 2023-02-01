@@ -30,11 +30,6 @@ cluster = {
   }
 }
 
-auth = {
-  admin_user = "${K8S_ADMIN_USERNAME}"
-  ssh_public_key_path = "${K8SADMIN_PUBKEY}"
-}
-
 subscription_properties = {
   subscription_id = "${SUBSCRIPTION_ID}"
   client_id = "${SP_APPID}"

@@ -9,9 +9,7 @@ Create an idesk kubernetes cluster including the NFS server used for product sto
   - [NFS server deployment](#nfs-server-deployment)
   - [Ping monitor](#ping-monitor)
   - [Requirements](#requirements)
-  - [Providers](#providers)
   - [Modules](#modules)
-  - [Resources](#resources)
   - [Inputs](#inputs)
   - [Outputs](#outputs)
 
@@ -77,7 +75,6 @@ A similar monitor is started on the build server so we can trace network interru
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_auth"></a> [auth](#input\_auth) | Authentication properties | <pre>object({<br>    admin_user          = string // name of admin user<br>    ssh_public_key_path = string // Path to ssh public key file needed for admin access<br>  })</pre> | n/a | yes |
 | <a name="input_cluster"></a> [cluster](#input\_cluster) | cluster properties | <pre>object({<br>    // Name of the cluster<br>    name = string<br>    // Kubernetes version to deploy. Note: the values are restricted by AKS, you can't take arbitrary values<br>    kubernetes_version = string<br>    // agent pool for application components<br>    app_pool = object({<br>      agent_size      = string<br>      agent_count     = number<br>      max_pods        = number<br>      os_disk_size_gb = number<br>      labels          = map(string)<br>    })<br>    // agent pool for monitoring components<br>    monitor_pool = object({<br>      agent_size      = string<br>      agent_count     = number<br>      max_pods        = number<br>      os_disk_size_gb = number<br>      labels          = map(string)<br>    })<br>    // Cluster resource group<br>    group = object({<br>      name     = string // name of the resource group<br>      location = string // location of the resource group - will be used for all server resources<br>    })<br>  })</pre> | n/a | yes |
 | <a name="input_creation_properties"></a> [creation\_properties](#input\_creation\_properties) | Creator time/date of creation of the resource | <pre>object({<br>    name = string // name of creator<br>    host = string // host where creation was started<br>  })</pre> | `null` | no |
 | <a name="input_kubeconfig"></a> [kubeconfig](#input\_kubeconfig) | path of configuration file for the created k8s cluster | `string` | n/a | yes |

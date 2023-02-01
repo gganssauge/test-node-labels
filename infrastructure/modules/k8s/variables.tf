@@ -41,16 +41,6 @@ variable "cluster" {
   })
 }
 
-variable "ssh-auth" {
-  description = "properties of the ssh admin connection"
-  type = object({
-    // admin user
-    admin_user = string
-    // Path of the ssh public key which will be stored in authorized_keys on the cluster
-    public_key_path = string
-  })
-}
-
 variable "subscription_properties" {
   description = "Azure subscription properties"
   sensitive   = true
