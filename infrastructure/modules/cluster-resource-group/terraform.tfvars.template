@@ -1,9 +1,0 @@
-creation_properties = {
-  name = "${CREATOR}"
-  host = "${HOST_NAME}"
-}
-
-resource-group = {
-  name = "${RESOURCE_GROUP}"
-  location = "${LOCATION}"
-}

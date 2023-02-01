@@ -2,10 +2,8 @@
 
 set -eu -o pipefail
 
-K8SADMIN_KEY="$(readlink -f "${K8SADMIN_KEY:-$HOME/.ssh/k8sadmin.id_rsa}")"; export K8SADMIN_PUBKEY
-K8SADMIN_PUBKEY="$(readlink -f "${K8SADMIN_PUBKEY:-$HOME/.ssh/k8sadmin.id_rsa.pub}")"; export K8SADMIN_PUBKEY
 LOCATION=northeurope; export LOCATION
-RESOURCE_GROUP="dev-test-$(date +%Y%m%d%H%M)"; export RESOURCE_GROUP
+RESOURCE_GROUP="${RESOURCE_GROUP-dev-test-$(date +%Y%m%d%H%M)}"; export RESOURCE_GROUP
 
 infrastructure=./infrastructure
 infrastructure_dir="$infrastructure/test-node-labels"
@@ -243,7 +241,6 @@ remove_group() {
     az group delete --name "$resource_group" --yes >/dev/null 2>&1 || true
 }
 
-K8S_ADMIN_USERNAME=k8sadmin; export K8S_ADMIN_USERNAME
 K8S_AGENT_COUNT=2; export K8S_AGENT_COUNT
 K8S_MONITOR_COUNT=2; export K8S_MONITOR_COUNT
 KUBECONFIG="$PWD/kubeconfig"; export KUBECONFIG

@@ -59,9 +59,7 @@
 		"--volume", "${localEnv:PIP_CONFIG_FILE}:/home/vscode/.config/pip/pip.conf:ro",
 		"--volume", "${localEnv:HOME}/.ssh:/home/vscode/.ssh:ro",
 		"--volume", "/etc/localtime:/etc/localtime:ro",
-		"--volume", "/etc/timezone:/etc/timezone:ro",
-		"--add-host", "artifactory.haufedev.systems:${localEnv:ARTIFACTORY_HOST}",
-		"--add-host", "vppypi.haufe-ep.de:${localEnv:VLPYPI_HOST}"
+		"--volume", "/etc/timezone:/etc/timezone:ro"
 	],
 
 	// Uncomment the next line to run commands after the container is created - for example installing curl.
