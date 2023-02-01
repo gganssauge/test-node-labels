@@ -252,7 +252,7 @@ HOST_NAME="${HOST_NAME:-${HOSTNAME:-"$(hostname -f)"}}"; export HOST_NAME
 CLUSTER_NAME=TEST; export CLUSTER_NAME
 
 cleanup() {
-    terraform "-chdir=$infrastructure_dir" destroy -auto-approve
+    terraform "-chdir=$infrastructure_dir" destroy -auto-approve >/dev/null
 }
 
 trap "cleanup" 0
