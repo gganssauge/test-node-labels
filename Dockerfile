@@ -5,4 +5,4 @@ COPY . ./
 ENV TF_CLI_ARGS_apply=-no-color
 ENV TF_CLI_ARGS_destroy=-no-color
 RUN ls -la
-ENTRYPOINT ["/bin/bash", "-x", "test-node-labels.sh"]
+ENTRYPOINT ["/bin/bash", "test-node-labels.sh"]
