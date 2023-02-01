@@ -32,7 +32,7 @@ azure_login() {
     export SUBSCRIPTION_ID="$DEV_SUBSCRIPTION_ID"
 
     az login --service-principal -u "$SP_APPID" -p "$SP_PASSWORD" --tenant "$SP_TENANTID" -o none
-    az account set --subscription "$SUBSCRIPTION_ID"
+    az account set --subscription "$SUBSCRIPTION_ID" -o none
 
     # terraform does need these to authenticate
     ARM_CLIENT_ID="$SP_APPID"; export ARM_CLIENT_ID
