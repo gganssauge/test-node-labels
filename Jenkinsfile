@@ -10,11 +10,6 @@ pipeline {
     agent { label "deploy" }
     options { timestamps() }
 
-    environment {
-        CREATOR = "Job $JOB_NAME $BUILD_DISPLAY_NAME"
-        HOST_NAME = "$NODE_NAME"
-    }
-
     stages {
         stage('provision') {
             steps {
