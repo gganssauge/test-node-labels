@@ -14,10 +14,10 @@ echo "INFO: Building temporary deployment image..."
 docker build -t "$imageId" --pull --no-cache -f "$dockerfile" .
 docker run \
   --rm \
-  -e "ARM_CLIENT_ID=$DEV_SP_APPID" \
-  -e "ARM_CLIENT_SECRET=$DEV_SP_PASSWORD" \
+  -e "ARM_CLIENT_ID=$DEV_SP_USR" \
+  -e "ARM_CLIENT_SECRET=$DEV_SP_PSW" \
   -e "ARM_SUBSCRIPTION_ID=$DEV_SUBSCRIPTION_ID" \
-  -e "ARM_TENANT_ID=$SP_TENANT_ID" \
+  -e "ARM_TENANT_ID=$SP_TENANTID" \
   -e K8S_AGENT_COUNT \
   -e RESOURCE_GROUP \
   --name "$containerId" \

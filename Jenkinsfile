@@ -12,17 +12,17 @@ pipeline {
 
     stages {
         stage('provision') {
+            environment {
+                DEV_SP = credentials('Azure-Service-Principal-DEV')
+            }
             steps {
                 script {
                     env.RESOURCE_GROUP = "dev-test-${new Date().format('yyMMddHHmm')}".toLowerCase()
 
                     currentBuild.description = "test-cluster in resource group ${RESOURCE_GROUP}"
 
-                    withCredentials(
-                        auroralib.secrets('DEV_SP')) {
-                        docker.withRegistry(auroralib.HAUFE_REGISTRY, auroralib.HAUFE_REGISTRY_SECRET) {
-                            sh './jenkins.sh'
-                        }
+                    docker.withRegistry(auroralib.HAUFE_REGISTRY, auroralib.HAUFE_REGISTRY_SECRET) {
+                        sh './jenkins.sh'
                     }
                 }
             }
